@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding='UTF-8' ?>
+<groups>
+
+	<group>
+		<id>1333</id>
+		<basePrice>5.00</basePrice>
+	</group>
+
+	<group>
+		<id>1334</id>
+		<basePrice>500.00</basePrice>
+	</group>
+
+	<group>
+		<id>1335</id>
+		<basePrice>9000.00</basePrice>
+	</group>
+
+	<group>
+		<id>1336</id>
+		<basePrice>70000.00</basePrice>
+	</group>
+
+	<group>
+		<id>1337</id>
+		<basePrice>1350000.00</basePrice>
+	</group>
+
+</groups>

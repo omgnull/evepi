@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>settings</file>
+        <file>translations/en_US.qm</file>
+        <file>images/splash.jpg</file>
+        <file>images/default_32.png</file>
+        <file>images/default_64.png</file>
+    </qresource>
+</RCC>

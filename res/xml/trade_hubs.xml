@@ -1,0 +1,84 @@
+<?xml version="1.1" encoding='UTF-8' ?>
+<hubs>
+
+	<hub>
+		<solarSystemId>30000142</solarSystemId>
+		<name>Jita</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30002187</solarSystemId>
+		<name>Amarr</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30002510</solarSystemId>
+		<name>Rens</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30002659</solarSystemId>
+		<name>Dodixie</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30002053</solarSystemId>
+		<name>Hek</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30001671</solarSystemId>
+		<name>Tash-Murkon Prime</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30004969</solarSystemId>
+		<name>Oursulaert</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30002819</solarSystemId>
+		<name>Motsu</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30003862</solarSystemId>
+		<name>Agil</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30045329</solarSystemId>
+		<name>Ichoriya</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30001376</solarSystemId>
+		<name>Nourvukaiken</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30002385</solarSystemId>
+		<name>Teonusude</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30004993</solarSystemId>
+		<name>Villore</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30003830</solarSystemId>
+		<name>Orvolle</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30001363</solarSystemId>
+		<name>Sobaseki</name>
+	</hub>
+
+	<hub>
+		<solarSystemId>30003794</solarSystemId>
+		<name>Stacmon</name>
+	</hub>
+
+</hubs>
