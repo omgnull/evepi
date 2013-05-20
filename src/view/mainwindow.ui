@@ -50,6 +50,9 @@
         </property>
         <item>
          <widget class="QScrollArea" name="overviewScroll">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -67,6 +70,11 @@
              <width>826</width>
              <height>513</height>
             </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">#overviewContents {
+	background: #FFF;
+}</string>
            </property>
           </widget>
          </widget>
@@ -405,10 +413,28 @@
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
+    <property name="toolTip">
+     <string notr="true"/>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="whatsThis">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionOpen"/>
+    <addaction name="actionImport"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -430,8 +456,17 @@
    <property name="text">
     <string>Exit</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Q</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
   </action>
-  <action name="actionOpen">
+  <action name="actionImport">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Import</string>
    </property>
@@ -505,6 +540,22 @@
     </hint>
     <hint type="destinationlabel">
      <x>483</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>424</x>
      <y>313</y>
     </hint>
    </hints>

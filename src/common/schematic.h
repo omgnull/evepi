@@ -33,11 +33,12 @@ public:
 
     double getCost();
 
-    double getProfitIsk();
+    double getProfitIsk(bool);
 
-    double getProfitPercentage();
+    double getProfitPercentage(bool);
 
     bool isMainSchematic();
+
 
     bool hasChildren();
 

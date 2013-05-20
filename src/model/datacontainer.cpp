@@ -537,12 +537,16 @@ void Model::DataContainer::loadPricesResponse(QDomDocument *doc)
         for (int it = 0, typesSize = types.size(); it < typesSize; it++) {
             QDomElement el = types.at(it).toElement();
 
+            /*
+             * For buy price set min sell price,
+             * for sell price set max buy price
+             */
             if ("buy" == el.tagName()) {
-                double buyPrice = el.childNodes().at(2).firstChild().nodeValue().toDouble();
-                component->setBuyPrice(buyPrice);
-            } else if ("sell" == el.tagName()) {
-                double sellPrice = el.childNodes().at(3).firstChild().nodeValue().toDouble();
+                double sellPrice = el.childNodes().at(2).firstChild().nodeValue().toDouble();
                 component->setSellPrice(sellPrice);
+            } else if ("sell" == el.tagName()) {
+                double buyPrice = el.childNodes().at(3).firstChild().nodeValue().toDouble();
+                component->setBuyPrice(buyPrice);
             }
         }
     }

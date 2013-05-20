@@ -20,5 +20,7 @@ void SQLLite::connect(QSqlDatabase *sdb, QString dbname)
         qFatal("Could not open %s database.", qPrintable(path));
     }
 
+    #ifdef APP_DEBUG
     qDebug("Connected to %s.", qPrintable(path));
+    #endif
 }

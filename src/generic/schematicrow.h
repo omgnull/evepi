@@ -3,6 +3,7 @@
 
 #include "src/main.h"
 #include "ui_schematicrow.h"
+#include "schematicrowcomponent.h"
 #include "src/model/datacontainer.h"
 #include "src/common/component.h"
 #include "src/common/schematic.h"
@@ -28,15 +29,21 @@ public:
 
     ~SchemaitRow();
 
-    void setSchematic(Common::Schematic *);
+    void setSchematic(Common::Schematic *, QString);
 
     void updateView();
+
+    static QPalette pal;
     
 protected:
     void paintEvent(QPaintEvent *);
 
 private:
+    void setupDefaultPalette();
+
     Ui::SchemaitRow *ui;
+
+    QList<SchematicRowComponent *> *components;
 
     Common::Schematic *schematic;
 

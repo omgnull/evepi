@@ -19,7 +19,9 @@ void Connection::connect(QString dbtype, QString dbname)
     QSqlDatabase sdb;
 
     if ("QSQLITE" == dbtype) {
+        #ifdef APP_DEBUG
         qDebug("Trying to connect to %s using driver %s.", qPrintable(dbname), qPrintable(dbtype));
+        #endif
 
         sdb = QSqlDatabase::addDatabase(dbtype);
         SQLLite driver;

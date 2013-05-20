@@ -49,7 +49,12 @@ Product* Schematic::getProduct()
     return product;
 }
 
-double Schematic::getProfitIsk()
+QMap<int, Consumable*> Schematic::getConsumables()
+{
+    return consumables;
+}
+
+double Schematic::getProfitIsk(bool perHour)
 {
     double profit;
     int consumableQuatity;
@@ -61,6 +66,10 @@ double Schematic::getProfitIsk()
 
     if (0 == sellPrice) {
         return 0;
+    }
+
+    if (perHour) {
+        productQuatity = cycleTime == 3600 ? productQuatity : productQuatity * 2;
     }
 
     profit = (productQuatity * sellPrice) - (productQuatity * exportCost);
@@ -75,6 +84,10 @@ double Schematic::getProfitIsk()
         buyPrice = consumable->getComponent()->getBuyPrice();
         importCost = consumable->getComponent()->getImportCost();
 
+        if (perHour) {
+            consumableQuatity = cycleTime == 3600 ? consumableQuatity : consumableQuatity * 2;
+        }
+
         profit -= (consumableQuatity * buyPrice) + (consumableQuatity * importCost);
     }
 
@@ -85,7 +98,7 @@ double Schematic::getProfitIsk()
     return profit;
 }
 
-double Schematic::getProfitPercentage()
+double Schematic::getProfitPercentage(bool perHour)
 {
     double negative = 0;
     double positive= 0;
@@ -101,6 +114,10 @@ double Schematic::getProfitPercentage()
         return 0;
     }
 
+    if (perHour) {
+        productQuatity = cycleTime == 3600 ? productQuatity : productQuatity * 2;
+    }
+
     positive = (productQuatity * sellPrice) - (productQuatity * exportCost);
 
     Consumable *consumable;
@@ -112,6 +129,10 @@ double Schematic::getProfitPercentage()
         consumableQuatity = consumable->getQuantity();
         buyPrice = consumable->getComponent()->getBuyPrice();
         importCost = consumable->getComponent()->getImportCost();
+
+        if (perHour) {
+            consumableQuatity = cycleTime == 3600 ? consumableQuatity : consumableQuatity * 2;
+        }
 
         consumable = it.value();
         negative += (consumableQuatity * buyPrice) + (consumableQuatity * importCost);

@@ -10,6 +10,9 @@
 #include <QString>
 #include <QProgressbar>
 
+#include <QtPlugin>
+//Q_IMPORT_PLUGIN(qico)
+
 #ifdef QT_DEBUG
 //#define APP_DEBUG
 #endif
@@ -38,6 +41,13 @@ namespace APPC {
     const QString DATA_COMPONENT_GENERIC_ICON       = "/icons/%1_64.png";
 
     const QString DATA_SPLASHSCREEN_BG              = ":/images/splash.jpg";
+
+    const QString TITLE_MAIN_WINDOW                 = "EVE PI";
+    const QString TITLE_GENERIC                     = "EVE PI %1";
+    const QString TITLE_TAB_OVERVIEW                = "EVE PI Overview";
+    const QString TITLE_ABOUT_WINDOW                = "EVE PI About";
+
+    const QString ICON_MAIN_WINDOW_WIN32            = ":/images/win32icon.ico";
 }
 
 #endif // MAIN_H

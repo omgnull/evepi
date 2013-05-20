@@ -35,7 +35,7 @@ void Query::exec(QString fName)
     QDomDocument *doc = cache.load(filename);
 
     if (doc) {
-        #ifdef QT_DEBUG
+        #ifdef APP_DEBUG
         qDebug() << "Data loaded from cache.";
         #endif
 
@@ -47,7 +47,7 @@ void Query::exec(QString fName)
     QNetworkRequest request;
     QUrl url = QUrl(buildQuery(baseUrl));
 
-    #ifdef QT_DEBUG
+    #ifdef APP_DEBUG
     qDebug() << "Request url: " << url.isValid();
     #endif
 

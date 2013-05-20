@@ -62,12 +62,12 @@ double Component::getSellPrice()
 
 double Component::getExportCost()
 {
-    return basePrice / 100 * Component::tax;
+    return (basePrice / 100) * Component::tax;
 }
 
 double Component::getImportCost()
 {
-    return basePrice / 100 * (Component::tax / 2);
+    return (basePrice / 100) * (Component::tax / 2);
 }
 
 void Component::setId(int n)

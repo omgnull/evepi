@@ -9,14 +9,13 @@ MainWindow::MainWindow(QWidget *parent) :
     overviewRows(new QList<Generic::SchemaitRow*>),
     overviewLayout(new QVBoxLayout())
 {
+    pricesType = pricesId = priceSource = 0;
+
     ui->setupUi(this);
     loadSettings();
 
     Model::DataContainer::setProgressBar(ui->progressBar);
     connect(dc, SIGNAL(pricesLoaded(int)), this, SLOT(pricesLoaded(int)));
-
-    pricesType = pricesId = priceSource = 0;
-
 }
 
 MainWindow::~MainWindow()
@@ -31,6 +30,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::loadSettings()
 {
+    setWindowIcon(QIcon(APPC::ICON_MAIN_WINDOW_WIN32));
+    setWindowTitle(APPC::TITLE_TAB_OVERVIEW);
+
     QSettings settings(APPC::SETTINGS_FILE, QSettings::IniFormat);
 
     setMinimumSize(APPC::MIN_WINNDOW_WIDTH, APPC::MIN_WINDOW_HEIGHT);
@@ -67,10 +69,6 @@ void MainWindow::loadSettings()
     pricesId = settings.value("pricesId", 0).toInt();
     pricesType = settings.value("pricesType", 0).toInt();
     priceSource = settings.value("priceSource", 0).toInt();
-
-    if (2 == priceSource) {
-
-    }
 
     settings.endGroup();
 }
@@ -135,26 +133,23 @@ void MainWindow::setupLayout()
        ui->taxBox->setCurrentIndex(idx);
     }
 
-    overviewLayout->setSpacing(3);
+    overviewLayout->setSpacing(9);
     ui->overviewScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->overviewContents->setLayout(overviewLayout);
+
     Generic::SchemaitRow *schematicRow;
     QMap<int, QString> groups = dc->getGroups();
     QList<Common::Schematic *> schematics;
-
-    //qDebug() << ui->overviewContents->layout()->
 
     for (auto it = groups.begin(),
          end = groups.end(); it != end; it++)
     {
         schematics = dc->getSchematicsByGroup(it.key());
-        qDebug() << "Start adding " << schematics.size()
-                 << " schematics to overview from goup " << it.value();
 
         for (int i = 0; i < schematics.size(); ++i) {
             schematicRow = new Generic::SchemaitRow(ui->overviewContents);
             overviewRows->append(schematicRow);
-            schematicRow->setSchematic(schematics.at(i));
+            schematicRow->setSchematic(schematics.at(i), it.value());
 
 
             overviewLayout->addWidget(schematicRow);
@@ -162,20 +157,21 @@ void MainWindow::setupLayout()
         }
     }
 
-    priceSourceChanged(priceSource);
+    ui->useTradeHubBox->setChecked(priceSource == 2);
+
     // [TODO] Need refactor
     if (0 != pricesId  && 0 != pricesType) {
         if (1 == pricesType) {
-            idx = ui->regionBox->findData(tax);
+            idx = ui->regionBox->findData(pricesId);
             if (-1 != idx) {
                 ui->regionBox->setCurrentIndex(idx);
-                regionChanged(pricesId);
+                regionChanged(idx);
             }
         } else if (2 == pricesType) {
-            idx = ui->tradeHubBox->findData(tax);
+            idx = ui->tradeHubBox->findData(pricesId);
             if (-1 != idx) {
                 ui->tradeHubBox->setCurrentIndex(idx);
-                tradeHubChanged(pricesId);
+                tradeHubChanged(idx);
             }
         }
     }
@@ -219,11 +215,12 @@ void MainWindow::tradeHubChanged(int n)
 void MainWindow::taxChanged(int n)
 {
     diasbleControl(true);
-    Model::DataContainer::setGlobalTax(ui->taxBox->itemData(n).toInt());
-    dc->setProgressBarValue(40);
+    Model::DataContainer::setGlobalTax(ui->taxBox->itemData(n).toDouble());
+    dc->setProgressBarValue(5);
 
     for (int i = 0, end = overviewRows->size(); i < end; i++) {
         overviewRows->at(i)->updateView();
+        dc->setProgressBarValue(1);
     }
 
     dc->setProgressBarValue(100);

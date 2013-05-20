@@ -1,4 +1,5 @@
 QT       += core gui network xml sql
+#QTPLUGIN += qico
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,7 +26,9 @@ SOURCES         += \
     src/model/xmlloader.cpp \
     src/util/comboboxhelper.cpp \
     src/model/xmlcache.cpp \
-    src/generic/schematicrow.cpp
+    src/generic/schematicrow.cpp \
+    src/util/schematiccalculator.cpp \
+    src/generic/schematicrowcomponent.cpp
 
 
 HEADERS         += \
@@ -44,13 +47,16 @@ HEADERS         += \
     src/model/xmlloader.h \
     src/util/comboboxhelper.h \
     src/model/xmlcache.h \
-    src/generic/schematicrow.h
+    src/generic/schematicrow.h \
+    src/util/schematiccalculator.h \
+    src/generic/schematicrowcomponent.h
 
 
 
 FORMS           += \
     src/view/mainwindow.ui \
-    src/view/schematicrow.ui
+    src/view/schematicrow.ui \
+    src/view/schematicrowcomponent.ui
 
 TRANSLATIONS    += \
     src/translations/en_US.ts
