@@ -1,0 +1,24 @@
+<?xml version="1.1" encoding='UTF-8' ?>
+<taxes>
+	<tax>0</tax>
+	<tax>5</tax>
+	<tax>10</tax>
+	<tax>15</tax>
+	<tax>20</tax>
+	<tax>25</tax>
+	<tax>30</tax>
+	<tax>35</tax>
+	<tax>40</tax>
+	<tax>45</tax>
+	<tax>50</tax>
+	<tax>55</tax>
+	<tax>60</tax>
+	<tax>65</tax>
+	<tax>70</tax>
+	<tax>75</tax>
+	<tax>80</tax>
+	<tax>85</tax>
+	<tax>90</tax>
+	<tax>95</tax>
+	<tax>100</tax>
+</taxes>
