@@ -15,6 +15,7 @@ Requirments
 
 * Visual c++ library
 * EVE online static database must be placed to "data/eve.db". (sqllite format)
+* Cache stored at "xml/cache dir", must be writeable
 
 
 EVE online static database can be downloaded from:
